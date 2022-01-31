@@ -1,12 +1,16 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { DiceTapper } from '.'
+import { predictableRandom, d6 } from '../testing/predictable-random.spec'
 
 describe('DiceTapper', () => {
-
-
     test('rolling a d6', async () => {
-        render(<DiceTapper />)
+        const random = predictableRandom(d6(1), d6(2))
+        render(<DiceTapper random={random} />)
 
-        expect(screen.queryByText('4')).toBeInTheDocument()
+        fireEvent.click(screen.getByText('Roll d6'))
+        expect(screen.queryByText('1')).toBeInTheDocument()
+
+        fireEvent.click(screen.getByText('Roll d6'))
+        expect(screen.queryByText('2')).toBeInTheDocument()
     })
 })
