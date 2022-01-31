@@ -1,6 +1,7 @@
 import React from 'react'
 import { die, Die } from './die'
 import { useSeries } from './useSeries'
+import { useRestartableTimout } from './useRestartableTimout'
 
 export type DiceTapperProps = {
     id?: string,
@@ -23,13 +24,10 @@ export const DiceTapper: React.FC<DiceTapperProps> = ({
 
     const roll = (rollDie: Die) => () => addRoll(rollDie(random))
 
-    const [ newSeriesTimeoutId, setNewSeriesTimeoutId ] = React.useState<number>(undefined)
+    const [ restartSeriesTimeout, endSeriesTimeout ] = useRestartableTimout(endRollSeries)
     React.useEffect(() => {
-        if (newSeriesTimeoutId !== undefined) {
-            window.clearTimeout(newSeriesTimeoutId)
-        }
-
-        setNewSeriesTimeoutId(window.setTimeout(endRollSeries, secondsUntilNewRollSeries * 1000))
+        restartSeriesTimeout(secondsUntilNewRollSeries * 1000)
+        return endSeriesTimeout
     }, [rolls])
 
     return (
