@@ -2,6 +2,7 @@ import React from 'react'
 import { die, Die } from './die'
 import { useSeries } from './useSeries'
 import { useRestartableTimout } from './useRestartableTimout'
+import * as classes from './DiceTapper.module.css'
 
 export type DiceTapperProps = {
     id?: string,
@@ -31,8 +32,8 @@ export const DiceTapper: React.FC<DiceTapperProps> = ({
     }, [rolls])
 
     return (
-        <article>
-            <fieldset>
+        <article className={classes['dice-tapper']}>
+            <fieldset className={classes.dice}>
                 <legend>Dice</legend>
                 <button onClick={roll(die(4))}>d4</button>
                 <button onClick={roll(die(6))}>d6</button>
@@ -42,12 +43,16 @@ export const DiceTapper: React.FC<DiceTapperProps> = ({
                 <button onClick={roll(die(20))}>d20</button>
             </fieldset>
             <section>
-                <label htmlFor={ids.sum}>Sum</label>
-                <output id={ids.sum}>{sum}</output>
+                <div className={classes.output}>
+                    <label htmlFor={ids.sum}>Sum</label>
+                    <output id={ids.sum}>{sum}</output>
+                </div>
             </section>
             <section>
-                <label htmlFor={ids.rolls}>Rolls</label>
-                <output id={ids.rolls}>{rolls.join(' ')}</output>
+                <div className={classes.output}>
+                    <label htmlFor={ids.rolls}>Rolls</label>
+                    <output id={ids.rolls}>{rolls.join(' ')}</output>
+                </div>
             </section>
         </article>
     )

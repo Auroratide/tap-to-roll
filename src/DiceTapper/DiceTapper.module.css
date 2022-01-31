@@ -1,0 +1,43 @@
+.dice-tapper {
+    display: flex;
+    flex-direction: column;
+    text-transform: lowercase;
+
+    max-width: 15em;
+    margin: auto;
+    border: 1px solid black;
+}
+
+.dice {
+    border: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    row-gap: 0.5em;
+}
+
+.dice legend {
+    margin: auto;
+}
+
+.dice button {
+    background: none;
+    border: 0.25em solid blue;
+    border-radius: 2em;
+    width: 4em;
+    height: 4em;
+    cursor: pointer;
+}
+
+.output {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    line-height: 1;
+}
+
+.output output {
+    font-size: 2em;
+    min-height: 1em;
+    text-align: center;
+}
