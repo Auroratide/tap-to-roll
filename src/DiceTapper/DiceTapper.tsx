@@ -16,10 +16,14 @@ export const DiceTapper: React.FC<DiceTapperProps> = ({
     random = Math.random,
 }) => {
     const [ rolls, addRoll, endRollSeries ] = useSeries([])
+    const min = rolls.length > 0 ? Math.min(...rolls) : ''
     const sum = rolls.reduce((a, b) => a + b, 0)
+    const max = rolls.length > 0 ? Math.max(...rolls) : ''
 
     const ids = {
+        min: `${id}-min`,
         sum: `${id}-sum`,
+        max: `${id}-max`,
         rolls: `${id}-rolls`,
     }
 
@@ -42,10 +46,18 @@ export const DiceTapper: React.FC<DiceTapperProps> = ({
                 <button onClick={roll(die(12))}>d12</button>
                 <button onClick={roll(die(20))}>d20</button>
             </fieldset>
-            <section>
+            <section className={classes.aggregation}>
+                <div className={classes.output}>
+                    <label htmlFor={ids.min}>Min</label>
+                    <output id={ids.min}>{min}</output>
+                </div>
                 <div className={classes.output}>
                     <label htmlFor={ids.sum}>Sum</label>
                     <output id={ids.sum}>{sum}</output>
+                </div>
+                <div className={classes.output}>
+                    <label htmlFor={ids.max}>Max</label>
+                    <output id={ids.max}>{max}</output>
                 </div>
             </section>
             <section>

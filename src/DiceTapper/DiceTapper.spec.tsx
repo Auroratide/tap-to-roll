@@ -46,6 +46,26 @@ describe('DiceTapper', () => {
         expect(screen.getByLabelText('Sum')).toHaveTextContent('12')
     })
 
+    test('identifying the max and min', async () => {
+        const random = predictableRandom(d20(8), d20(3), d20(16))
+        render(<DiceTapper random={random} />)
+
+        expect(screen.getByLabelText('Max')).toBeEmptyDOMElement()
+        expect(screen.getByLabelText('Min')).toBeEmptyDOMElement()
+
+        fireEvent.click(screen.getByText('d20'))
+        expect(screen.getByLabelText('Max')).toHaveTextContent('8')
+        expect(screen.getByLabelText('Min')).toHaveTextContent('8')
+
+        fireEvent.click(screen.getByText('d20'))
+        expect(screen.getByLabelText('Max')).toHaveTextContent('8')
+        expect(screen.getByLabelText('Min')).toHaveTextContent('3')
+
+        fireEvent.click(screen.getByText('d20'))
+        expect(screen.getByLabelText('Max')).toHaveTextContent('16')
+        expect(screen.getByLabelText('Min')).toHaveTextContent('3')
+    })
+
     test('reset rolls after a period of no input', async () => {
         const random = predictableRandom(d8(3), d8(1), d8(8), d8(2))
         render(<DiceTapper secondsUntilNewRollSeries={milliseconds(50)} random={random} />)
