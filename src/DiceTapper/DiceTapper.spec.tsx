@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { DiceTapper } from '.'
 import {
     predictableRandom,
@@ -6,7 +6,7 @@ import {
 } from '../testing/predictable-random.spec'
 
 const milliseconds = (seconds: number) => seconds / 1000
-const waitForMilliseconds = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+const waitForMilliseconds = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms))
 
 describe('DiceTapper', () => {
     test('rolling each type of die', async () => {
@@ -57,7 +57,7 @@ describe('DiceTapper', () => {
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3 1$/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('4')
 
-        await waitForMilliseconds(50)
+        await act(() => waitForMilliseconds(50))
 
         // After the time period, a new series begins
         fireEvent.click(screen.getByText('d8'))

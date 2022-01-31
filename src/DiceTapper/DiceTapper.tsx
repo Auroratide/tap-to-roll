@@ -1,5 +1,6 @@
 import React from 'react'
 import { die, Die } from './die'
+import { useSeries } from './useSeries'
 
 export type DiceTapperProps = {
     id?: string,
@@ -12,31 +13,23 @@ export const DiceTapper: React.FC<DiceTapperProps> = ({
     secondsUntilNewRollSeries = 4,
     random = Math.random,
 }) => {
-    const [ rolls, setRolls ] = React.useState([])
-    const [ inSeries, setInSeries ] = React.useState(false)
-    const [ newSeriesTimeoutId, setNewSeriesTimeoutId ] = React.useState<number>(undefined)
+    const [ rolls, addRoll, endRollSeries ] = useSeries([])
     const sum = rolls.reduce((a, b) => a + b, 0)
+
     const ids = {
         sum: `${id}-sum`,
         rolls: `${id}-rolls`,
     }
 
-    const roll = (rollDie: Die) => () => {
-        if (inSeries) {
-            setRolls([...rolls, rollDie(random)])
-        } else {
-            setRolls([rollDie(random)])
-        }
+    const roll = (rollDie: Die) => () => addRoll(rollDie(random))
 
-        setInSeries(true)
-    }
-
+    const [ newSeriesTimeoutId, setNewSeriesTimeoutId ] = React.useState<number>(undefined)
     React.useEffect(() => {
         if (newSeriesTimeoutId !== undefined) {
             window.clearTimeout(newSeriesTimeoutId)
         }
 
-        setNewSeriesTimeoutId(window.setTimeout(() => setInSeries(false), secondsUntilNewRollSeries * 1000))
+        setNewSeriesTimeoutId(window.setTimeout(endRollSeries, secondsUntilNewRollSeries * 1000))
     }, [rolls])
 
     return (
