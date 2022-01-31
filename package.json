@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "parcel -p 3000 src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -13,8 +13,13 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.4.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
-    "parcel": "^2.2.1"
+    "jest": "^27.4.7",
+    "parcel": "^2.2.1",
+    "ts-jest": "^27.1.3"
   }
 }
