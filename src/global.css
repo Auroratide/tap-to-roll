@@ -8,8 +8,8 @@
 
     --color-bg: hsl(47, 41%, 81%);
     --color-bg-light: hsl(49, 62%, 95%);
-    --color-heading: #58180d;
-    --color-primary-dark: #3c1f00;
+    --color-primary: hsl(9, 74%, 20%);
+    --color-primary-dark: hsl(31, 100%, 12%);
 }
 
 body {
@@ -18,6 +18,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    color: var(--color-heading);
+    color: var(--color-primary);
     font-weight: bold;
 }

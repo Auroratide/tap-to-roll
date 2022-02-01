@@ -13,7 +13,7 @@
 }
 
 .die-button .icon {
-    --die-color: var(--color-heading);
+    --die-color: var(--color-primary);
     --die-width: 6;
     grid-column: 1;
     grid-row: 1;
