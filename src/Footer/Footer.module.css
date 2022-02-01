@@ -1,5 +1,8 @@
 .footer {
+    display: flex;
+    justify-content: space-between;
     font-family: var(--font-body);
-    text-align: center;
     padding: 2em 1em;
+    margin: auto;
+    max-width: var(--width);
 }
