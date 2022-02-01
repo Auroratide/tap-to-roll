@@ -1,7 +1,21 @@
+@import url("./fonts/fonts.css");
+
 :root {
+    --font-heading: 'MrEaves', sans-serif;
+    --font-table-heading: 'ScalySansCaps', sans-serif;
+    --font-table: 'ScalySans', sans-serif;
+    --font-body: 'BookInsanity', serif;
+
     --color-bg: #e2d9ba;
+    --color-heading: #58180d;
 }
 
 body {
     background-color: var(--color-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    font-weight: bold;
 }

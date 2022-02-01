@@ -1,4 +1,5 @@
 .footer {
+    font-family: var(--font-body);
     text-align: center;
     padding: 2em 1em;
 }

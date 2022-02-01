@@ -1,4 +1,5 @@
 .dice-tapper {
+    font-family: var(--font-table);
     display: flex;
     flex-direction: column;
     text-transform: lowercase;
@@ -18,6 +19,8 @@
 
 .dice legend {
     margin: auto;
+    font-family: var(--font-table-heading);
+    font-weight: bold;
 }
 
 .dice button {
@@ -39,6 +42,11 @@
     flex-direction: column-reverse;
     align-items: center;
     line-height: 1;
+}
+
+.output label {
+    font-family: var(--font-table-heading);
+    font-weight: bold;
 }
 
 .output output {
