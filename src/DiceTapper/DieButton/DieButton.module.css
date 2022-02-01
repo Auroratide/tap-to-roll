@@ -1,0 +1,17 @@
+.die-button {
+    display: grid;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.die-button .icon {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.die-button .label {
+    grid-column: 1;
+    grid-row: 1;
+}

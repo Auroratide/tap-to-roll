@@ -3,6 +3,8 @@ import { die, Die } from './die'
 import { useSeries } from './useSeries'
 import { useRestartableTimout } from './useRestartableTimout'
 import * as classes from './DiceTapper.module.css'
+import { DieButton } from './DieButton'
+import { D4, D6, D8, D10, D12, D20 } from '../dice'
 
 export type DiceTapperProps = {
     id?: string,
@@ -39,12 +41,12 @@ export const DiceTapper: React.FC<DiceTapperProps> = ({
         <article className={classes['dice-tapper']}>
             <fieldset className={classes.dice}>
                 <legend>Dice</legend>
-                <button onClick={roll(die(4))}>d4</button>
-                <button onClick={roll(die(6))}>d6</button>
-                <button onClick={roll(die(8))}>d8</button>
-                <button onClick={roll(die(10))}>d10</button>
-                <button onClick={roll(die(12))}>d12</button>
-                <button onClick={roll(die(20))}>d20</button>
+                <DieButton onClick={roll(die(4))} icon={<D4 />} label="d4" />
+                <DieButton onClick={roll(die(6))} icon={<D6 />} label="d6" />
+                <DieButton onClick={roll(die(8))} icon={<D8 />} label="d8" />
+                <DieButton onClick={roll(die(10))} icon={<D10 />} label="d10" />
+                <DieButton onClick={roll(die(12))} icon={<D12 />} label="d12" />
+                <DieButton onClick={roll(die(20))} icon={<D20 />} label="d20" />
             </fieldset>
             <section className={classes.aggregation}>
                 <div className={classes.output}>

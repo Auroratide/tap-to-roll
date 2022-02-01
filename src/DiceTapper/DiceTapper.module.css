@@ -23,15 +23,6 @@
     font-weight: bold;
 }
 
-.dice button {
-    background: none;
-    border: 0.25em solid blue;
-    border-radius: 2em;
-    width: 4em;
-    height: 4em;
-    cursor: pointer;
-}
-
 .aggregation {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
