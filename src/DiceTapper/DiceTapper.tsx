@@ -12,11 +12,11 @@ export type DiceTapperProps = {
     random?: () => number, // [0, 1]
 }
 
-export const DiceTapper: React.FC<DiceTapperProps> = ({
+export const DiceTapper = ({
     id = 'dice-tapper',
     secondsUntilNewRollSeries = 4,
     random = Math.random,
-}) => {
+}: DiceTapperProps) => {
     const [ rolls, addRoll, endRollSeries ] = useSeries([])
     const min = rolls.length > 0 ? Math.min(...rolls) : ''
     const sum = rolls.reduce((a, b) => a + b, 0)
