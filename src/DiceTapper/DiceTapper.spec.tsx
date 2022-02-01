@@ -1,5 +1,7 @@
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render, screen, act } from '@testing-library/react'
 import { DiceTapper } from '.'
+import type { UserEvent } from '@testing-library/user-event/dist/types/setup'
+import userEvent from '@testing-library/user-event'
 import {
     predictableRandom,
     d4, d6, d8, d10, d12, d20,
@@ -9,26 +11,32 @@ const milliseconds = (seconds: number) => seconds / 1000
 const waitForMilliseconds = (ms: number) => new Promise<void>(resolve => setTimeout(resolve, ms))
 
 describe('DiceTapper', () => {
+    let user: UserEvent
+
+    beforeEach(() => {
+        user = userEvent.setup()
+    })
+
     test('rolling each type of die', async () => {
         const random = predictableRandom(d4(3), d6(5), d8(7), d10(9), d12(11), d20(19))
         render(<DiceTapper random={random} />)
 
-        fireEvent.click(screen.getByText('d4'))
+        await user.click(screen.getByText('d4'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent('3')
 
-        fireEvent.click(screen.getByText('d6'))
+        await user.click(screen.getByText('d6'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent('5')
 
-        fireEvent.click(screen.getByText('d8'))
+        await user.click(screen.getByText('d8'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent('7')
 
-        fireEvent.click(screen.getByText('d10'))
+        await user.click(screen.getByText('d10'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent('9')
 
-        fireEvent.click(screen.getByText('d12'))
+        await user.click(screen.getByText('d12'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent('11')
 
-        fireEvent.click(screen.getByText('d20'))
+        await user.click(screen.getByText('d20'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent('19')
     })
 
@@ -36,13 +44,13 @@ describe('DiceTapper', () => {
         const random = predictableRandom(d6(3), d6(5), d6(4))
         render(<DiceTapper random={random} />)
 
-        fireEvent.click(screen.getByText('d6'))
+        await user.click(screen.getByText('d6'))
         expect(screen.getByLabelText('Sum')).toHaveTextContent('3')
 
-        fireEvent.click(screen.getByText('d6'))
+        await user.click(screen.getByText('d6'))
         expect(screen.getByLabelText('Sum')).toHaveTextContent('8')
 
-        fireEvent.click(screen.getByText('d6'))
+        await user.click(screen.getByText('d6'))
         expect(screen.getByLabelText('Sum')).toHaveTextContent('12')
     })
 
@@ -53,15 +61,15 @@ describe('DiceTapper', () => {
         expect(screen.getByLabelText('Max')).toBeEmptyDOMElement()
         expect(screen.getByLabelText('Min')).toBeEmptyDOMElement()
 
-        fireEvent.click(screen.getByText('d20'))
+        await user.click(screen.getByText('d20'))
         expect(screen.getByLabelText('Max')).toHaveTextContent('8')
         expect(screen.getByLabelText('Min')).toHaveTextContent('8')
 
-        fireEvent.click(screen.getByText('d20'))
+        await user.click(screen.getByText('d20'))
         expect(screen.getByLabelText('Max')).toHaveTextContent('8')
         expect(screen.getByLabelText('Min')).toHaveTextContent('3')
 
-        fireEvent.click(screen.getByText('d20'))
+        await user.click(screen.getByText('d20'))
         expect(screen.getByLabelText('Max')).toHaveTextContent('16')
         expect(screen.getByLabelText('Min')).toHaveTextContent('3')
     })
@@ -70,20 +78,20 @@ describe('DiceTapper', () => {
         const random = predictableRandom(d8(3), d8(1), d8(8), d8(2))
         render(<DiceTapper secondsUntilNewRollSeries={milliseconds(50)} random={random} />)
 
-        fireEvent.click(screen.getByText('d8'))
+        await user.click(screen.getByText('d8'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3$/)
 
-        fireEvent.click(screen.getByText('d8'))
+        await user.click(screen.getByText('d8'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3 1$/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('4')
 
         await act(() => waitForMilliseconds(50))
 
         // After the time period, a new series begins
-        fireEvent.click(screen.getByText('d8'))
+        await user.click(screen.getByText('d8'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^8$/)
 
-        fireEvent.click(screen.getByText('d8'))
+        await user.click(screen.getByText('d8'))
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^8 2$/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('10')
     })
