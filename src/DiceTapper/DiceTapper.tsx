@@ -5,6 +5,7 @@ import { useRestartableTimout } from './useRestartableTimout'
 import * as classes from './DiceTapper.module.css'
 import { DieButton } from './DieButton'
 import { D4, D6, D8, D10, D12, D20 } from '../dice'
+import { SquareGrid } from '../SquareGrid'
 
 export type DiceTapperProps = {
     id?: string,
@@ -39,14 +40,16 @@ export const DiceTapper = ({
 
     return (
         <article className={classes['dice-tapper']}>
-            <fieldset className={classes.dice}>
+            <fieldset className={classes['dice-container']}>
                 <legend>Dice</legend>
-                <DieButton onClick={roll(die(4))} icon={<D4 />} label="d4" />
-                <DieButton onClick={roll(die(6))} icon={<D6 />} label="d6" />
-                <DieButton onClick={roll(die(8))} icon={<D8 />} label="d8" />
-                <DieButton onClick={roll(die(10))} icon={<D10 />} label="d10" />
-                <DieButton onClick={roll(die(12))} icon={<D12 />} label="d12" />
-                <DieButton onClick={roll(die(20))} icon={<D20 />} label="d20" />
+                <SquareGrid columns={2}>
+                    <DieButton onClick={roll(die(4))} icon={<D4 />} label="d4" />
+                    <DieButton onClick={roll(die(6))} icon={<D6 />} label="d6" />
+                    <DieButton onClick={roll(die(8))} icon={<D8 />} label="d8" />
+                    <DieButton onClick={roll(die(10))} icon={<D10 />} label="d10" />
+                    <DieButton onClick={roll(die(12))} icon={<D12 />} label="d12" />
+                    <DieButton onClick={roll(die(20))} icon={<D20 />} label="d20" />
+                </SquareGrid>
             </fieldset>
             <section className={classes.aggregation}>
                 <div className={classes.output}>

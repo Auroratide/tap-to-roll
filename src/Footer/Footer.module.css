@@ -2,7 +2,5 @@
     display: flex;
     justify-content: space-between;
     font-family: var(--font-body);
-    padding: 2em 1em;
-    margin: auto;
-    max-width: var(--width);
+    padding: 0;
 }

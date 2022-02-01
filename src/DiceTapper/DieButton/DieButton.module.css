@@ -1,14 +1,21 @@
 .die-button {
+    --margin: 12.5%;
     display: grid;
-    align-items: center;
+    place-items: center center;
     background: none;
-    border: none;
+    border: 1px solid blue;
+    padding: 0;
+    font-size: 2.5em;
+    margin: var(--margin);
+    width: calc(100% - 2 * var(--margin));
+    height: calc(100% - 2 * var(--margin));
     cursor: pointer;
 }
 
 .die-button .icon {
     grid-column: 1;
     grid-row: 1;
+    width: 75%;
 }
 
 .die-button .label {
