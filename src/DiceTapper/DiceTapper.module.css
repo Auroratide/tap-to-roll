@@ -2,10 +2,8 @@
     font-family: var(--font-table);
     display: grid;
     grid-template-rows: 1fr auto auto;
-    gap: 1em;
+    gap: 0.5em;
     text-transform: lowercase;
-
-    border: 1px solid black;
 }
 
 .dice-container {
@@ -36,7 +34,8 @@
 }
 
 .output output {
-    font-size: 2em;
+    font-size: 2.5em;
     min-height: 1em;
     text-align: center;
+    margin-bottom: 0.125em;
 }
