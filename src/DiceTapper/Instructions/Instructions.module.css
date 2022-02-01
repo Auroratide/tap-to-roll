@@ -1,0 +1,15 @@
+.instructions {
+    text-transform: none;
+}
+
+.title {
+    margin-bottom: 0.5em;
+}
+
+.list {
+    line-height: 1.25em;
+}
+
+.list li {
+    margin-bottom: 0.5em;
+}

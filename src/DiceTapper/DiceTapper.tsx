@@ -8,6 +8,7 @@ import { D4, D6, D8, D10, D12, D20 } from '../dice'
 import { SquareGrid } from '../SquareGrid'
 import { ShowRollResult } from './ShowRollResult'
 import { Output } from './Output'
+import { Instructions } from './Instructions'
 
 export type DiceTapperProps = {
     id?: string,
@@ -66,6 +67,7 @@ export const DiceTapper = ({
                     ))}</Output>
                 </section>
             </section>
+            <Instructions />
         </article>
     )
 }
