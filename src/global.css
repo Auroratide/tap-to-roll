@@ -7,8 +7,9 @@
     --font-body: 'BookInsanity', serif;
 
     --color-bg: hsl(47, 41%, 81%);
-    --color-bg-dark: hsl(47, 45%, 72%);
+    --color-bg-light: hsl(49, 62%, 95%);
     --color-heading: #58180d;
+    --color-primary-dark: #3c1f00;
 }
 
 body {

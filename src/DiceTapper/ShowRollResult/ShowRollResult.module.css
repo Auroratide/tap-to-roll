@@ -5,7 +5,7 @@
 }
 
 .show-roll-result .icon {
-    --die-color: var(--color-bg-dark);
+    --die-color: var(--color-bg);
     --die-width: 18;
     grid-column: 1;
     grid-row: 1;

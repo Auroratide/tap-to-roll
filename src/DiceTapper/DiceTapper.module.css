@@ -16,9 +16,33 @@
     font-weight: bold;
 }
 
+.results {
+    background-color: var(--color-bg-light);
+    border-left: 0.125em solid var(--color-primary-dark);
+    border-right: 0.125em solid var(--color-primary-dark);
+    padding: 0.5em 0;
+    position: relative;
+}
+
+.results::before {
+    --cir-width: 0.25em;
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--cir-width));
+    left: calc(-1.2 * var(--cir-width));
+    width: calc(100% + 2.4 * var(--cir-width));
+    height: calc(100% + 2 * var(--cir-width));
+    background-image:
+        radial-gradient(circle at var(--cir-width) var(--cir-width), var(--color-primary-dark) var(--cir-width), transparent calc(var(--cir-width) + 0.01em)),
+        radial-gradient(circle at calc(100% - var(--cir-width)) var(--cir-width), var(--color-primary-dark) var(--cir-width), transparent calc(var(--cir-width) + 0.01em)),
+        radial-gradient(circle at var(--cir-width) calc(100% - var(--cir-width)), var(--color-primary-dark) var(--cir-width), transparent calc(var(--cir-width) + 0.01em)),
+        radial-gradient(circle at calc(100% - var(--cir-width)) calc(100% - var(--cir-width)), var(--color-primary-dark) var(--cir-width), transparent calc(var(--cir-width) + 0.01em));
+}
+
 .aggregation {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 1em;
 }
 
 .output {

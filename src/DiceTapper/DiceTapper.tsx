@@ -53,27 +53,29 @@ export const DiceTapper = ({
                     <DieButton onClick={roll(die(20))} icon={<D20 />} label="d20" />
                 </SquareGrid>
             </fieldset>
-            <section className={classes.aggregation}>
-                <div className={classes.output}>
-                    <label htmlFor={ids.min}>Min</label>
-                    <output id={ids.min}>{min}</output>
-                </div>
-                <div className={classes.output}>
-                    <label htmlFor={ids.sum}>Sum</label>
-                    <output id={ids.sum}>{sum}</output>
-                </div>
-                <div className={classes.output}>
-                    <label htmlFor={ids.max}>Max</label>
-                    <output id={ids.max}>{max}</output>
-                </div>
-            </section>
-            <section>
-                <div className={classes.output}>
-                    <label htmlFor={ids.rolls}>Rolls</label>
-                    <output id={ids.rolls}>{rolls.map((roll, i) => (
-                        <ShowRollResult key={i} result={roll} />
-                    ))}</output>
-                </div>
+            <section className={classes.results}>
+                <section className={classes.aggregation}>
+                    <div className={classes.output}>
+                        <label htmlFor={ids.min}>Min</label>
+                        <output id={ids.min}>{min}</output>
+                    </div>
+                    <div className={classes.output}>
+                        <label htmlFor={ids.sum}>Sum</label>
+                        <output id={ids.sum}>{sum}</output>
+                    </div>
+                    <div className={classes.output}>
+                        <label htmlFor={ids.max}>Max</label>
+                        <output id={ids.max}>{max}</output>
+                    </div>
+                </section>
+                <section>
+                    <div className={classes.output}>
+                        <label htmlFor={ids.rolls}>Rolls</label>
+                        <output id={ids.rolls}>{rolls.map((roll, i) => (
+                            <ShowRollResult key={i} result={roll} />
+                        ))}</output>
+                    </div>
+                </section>
             </section>
         </article>
     )
