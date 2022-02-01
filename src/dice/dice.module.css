@@ -1,7 +1,7 @@
 .die {
     display: block;
     overflow: visible;
-    fill: none;
+    fill: var(--die-fill, transparent);
     stroke: var(--die-color);
     stroke-width: var(--die-width);
 }
