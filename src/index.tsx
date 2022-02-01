@@ -1,11 +1,4 @@
 import ReactDOM from 'react-dom'
-import { Greeting } from './Greeting'
-import { DiceTapper } from './DiceTapper'
+import { App } from './App'
 
-ReactDOM.render(
-    <main>
-        <Greeting text="world" />
-        <DiceTapper />
-    </main>,
-    document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))
