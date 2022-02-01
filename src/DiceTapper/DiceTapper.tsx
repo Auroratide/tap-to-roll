@@ -7,6 +7,7 @@ import { DieButton } from './DieButton'
 import { D4, D6, D8, D10, D12, D20 } from '../dice'
 import { SquareGrid } from '../SquareGrid'
 import { ShowRollResult } from './ShowRollResult'
+import { Output } from './Output'
 
 export type DiceTapperProps = {
     id?: string,
@@ -55,26 +56,14 @@ export const DiceTapper = ({
             </fieldset>
             <section className={classes.results}>
                 <section className={classes.aggregation}>
-                    <div className={classes.output}>
-                        <label htmlFor={ids.min}>Min</label>
-                        <output id={ids.min}>{min}</output>
-                    </div>
-                    <div className={classes.output}>
-                        <label htmlFor={ids.sum}>Sum</label>
-                        <output id={ids.sum}>{sum}</output>
-                    </div>
-                    <div className={classes.output}>
-                        <label htmlFor={ids.max}>Max</label>
-                        <output id={ids.max}>{max}</output>
-                    </div>
+                    <Output id={ids.min} label="Min">{min}</Output>
+                    <Output id={ids.sum} label="Sum">{sum}</Output>
+                    <Output id={ids.max} label="Max">{max}</Output>
                 </section>
                 <section className={classes.rolls}>
-                    <div className={classes.output}>
-                        <label htmlFor={ids.rolls}>Rolls</label>
-                        <output id={ids.rolls}>{rolls.map((roll, i) => (
-                            <ShowRollResult key={i} result={roll} />
-                        ))}</output>
-                    </div>
+                    <Output id={ids.rolls} label="Rolls">{rolls.map((roll, i) => (
+                        <ShowRollResult key={i} result={roll} />
+                    ))}</Output>
                 </section>
             </section>
         </article>
