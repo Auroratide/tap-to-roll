@@ -1,4 +1,5 @@
 .die {
+    display: block;
     overflow: visible;
     fill: none;
     stroke: var(--die-color);

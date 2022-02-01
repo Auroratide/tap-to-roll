@@ -6,7 +6,8 @@
     --font-table: 'ScalySans', sans-serif;
     --font-body: 'BookInsanity', serif;
 
-    --color-bg: #e2d9ba;
+    --color-bg: hsl(47, 41%, 81%);
+    --color-bg-dark: hsl(47, 45%, 72%);
     --color-heading: #58180d;
 }
 

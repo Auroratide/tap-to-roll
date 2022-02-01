@@ -1,4 +1,11 @@
-export type Die = (random: () => number) => number
+export type RollResult = {
+    sides: number,
+    value: number,
+}
 
-export const die = (sides: number) => (random: () => number) =>
-    Math.floor(random() * sides + 1)
+export type Die = (random: () => number) => RollResult
+
+export const die = (sides: number) => (random: () => number): RollResult => ({
+    sides,
+    value: Math.floor(random() * sides + 1),
+})

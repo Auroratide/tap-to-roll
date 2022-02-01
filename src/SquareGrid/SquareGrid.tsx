@@ -12,8 +12,8 @@ type CssWithCustomProps = CSSProperties & {
 
 export const SquareGrid = ({ columns, children }: SquareGridProps) => (
     <div style={{ '--square-grid-columns': columns } as CssWithCustomProps} className={classes['square-grid']}>
-        {children.map(child => (
-            <div className={classes.cell}>
+        {children.map((child, i) => (
+            <div key={i} className={classes.cell}>
                 <div className={classes.item}>
                     {child}
                 </div>

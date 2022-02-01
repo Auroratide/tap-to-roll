@@ -1,11 +1,12 @@
 import React from 'react'
-import { die, Die } from './die'
+import { die, Die, RollResult } from './die'
 import { useSeries } from './useSeries'
 import { useRestartableTimout } from './useRestartableTimout'
 import * as classes from './DiceTapper.module.css'
 import { DieButton } from './DieButton'
 import { D4, D6, D8, D10, D12, D20 } from '../dice'
 import { SquareGrid } from '../SquareGrid'
+import { ShowRollResult } from './ShowRollResult'
 
 export type DiceTapperProps = {
     id?: string,
@@ -18,10 +19,11 @@ export const DiceTapper = ({
     secondsUntilNewRollSeries = 4,
     random = Math.random,
 }: DiceTapperProps) => {
-    const [ rolls, addRoll, endRollSeries ] = useSeries([])
-    const min = rolls.length > 0 ? Math.min(...rolls) : ''
-    const sum = rolls.reduce((a, b) => a + b, 0)
-    const max = rolls.length > 0 ? Math.max(...rolls) : ''
+    const [ rolls, addRoll, endRollSeries ] = useSeries<RollResult>([])
+    const rollValues = rolls.map(it => it.value)
+    const min = rollValues.length > 0 ? Math.min(...rollValues) : ''
+    const sum = rollValues.reduce((a, b) => a + b, 0)
+    const max = rollValues.length > 0 ? Math.max(...rollValues) : ''
 
     const ids = {
         min: `${id}-min`,
@@ -68,7 +70,9 @@ export const DiceTapper = ({
             <section>
                 <div className={classes.output}>
                     <label htmlFor={ids.rolls}>Rolls</label>
-                    <output id={ids.rolls}>{rolls.join(' ')}</output>
+                    <output id={ids.rolls}>{rolls.map((roll, i) => (
+                        <ShowRollResult key={i} result={roll} />
+                    ))}</output>
                 </div>
             </section>
         </article>

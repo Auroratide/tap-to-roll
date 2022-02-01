@@ -82,7 +82,7 @@ describe('DiceTapper', () => {
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3$/)
 
         await user.click(screen.getByText('d8'))
-        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3 1$/)
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^31$/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('4')
 
         await act(() => waitForMilliseconds(50))
@@ -92,7 +92,7 @@ describe('DiceTapper', () => {
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^8$/)
 
         await user.click(screen.getByText('d8'))
-        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^8 2$/)
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^82$/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('10')
     })
 })
