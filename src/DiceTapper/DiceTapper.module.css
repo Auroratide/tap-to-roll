@@ -1,13 +1,15 @@
 .dice-tapper {
     font-family: var(--font-table);
     display: grid;
-    grid-template-rows: 1fr auto auto;
+    grid-template-rows: 1fr auto;
     gap: 0.5em;
     text-transform: lowercase;
 }
 
 .dice-container {
     border: none;
+    width: 85%;
+    margin: auto;
 }
 
 .results {
