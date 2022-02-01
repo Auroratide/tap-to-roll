@@ -21,3 +21,15 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-primary);
     font-weight: bold;
 }
+
+/* https://webaim.org/techniques/css/invisiblecontent/ */
+.visually-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}

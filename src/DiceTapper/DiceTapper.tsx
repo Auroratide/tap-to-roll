@@ -43,7 +43,7 @@ export const DiceTapper = ({
     return (
         <article className={classes['dice-tapper']}>
             <fieldset className={classes['dice-container']}>
-                <legend>Dice</legend>
+                <legend className='visually-hidden'>Dice</legend>
                 <SquareGrid columns={2}>
                     <DieButton onClick={roll(die(4))} icon={<D4 />} label="d4" />
                     <DieButton onClick={roll(die(6))} icon={<D6 />} label="d6" />
@@ -68,7 +68,7 @@ export const DiceTapper = ({
                         <output id={ids.max}>{max}</output>
                     </div>
                 </section>
-                <section>
+                <section className={classes.rolls}>
                     <div className={classes.output}>
                         <label htmlFor={ids.rolls}>Rolls</label>
                         <output id={ids.rolls}>{rolls.map((roll, i) => (
