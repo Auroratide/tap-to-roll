@@ -1,6 +1,6 @@
 .die {
     overflow: visible;
     fill: none;
-    stroke: black;
-    stroke-width: 3;
+    stroke: var(--die-color);
+    stroke-width: var(--die-width);
 }
