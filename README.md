@@ -20,6 +20,7 @@ Need to roll 8d6 of fireball damage? Just tap the **d6** die eight times! As it 
 * Provides a Min and Max, perfect if you're rolling for advantage or disadvantage in DnD
 * Shows individual roll results
 * Automatically clears previous results if it's been a while; in other words, it detects when you want a new set of rolls without needing to hit "Clear" (though the clear button is there if needed)
+* Accessible via keyboard controls and screen reader
 
 ## Limitations
 
