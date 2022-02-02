@@ -22,7 +22,7 @@ export const DiceTapper = ({
     secondsUntilNewRollSeries = 4,
     random = Math.random,
 }: DiceTapperProps) => {
-    const [ rolls, addRoll, endRollSeries, inRollSeries ] = useSeries<RollResult>([])
+    const [ rolls, addRoll, endRollSeries, inRollSeries, resetRolls ] = useSeries<RollResult>([])
     const rollValues = rolls.map(it => it.value)
     const min = rollValues.length > 0 ? Math.min(...rollValues) : ''
     const sum = rollValues.reduce((a, b) => a + b, 0)
@@ -40,10 +40,18 @@ export const DiceTapper = ({
     const [ restartSeriesTimeout, endSeriesTimeout ] = useRestartableTimout(endRollSeries)
     const [ timeSeriesStarted, setTimeSeriesStarted ] = React.useState(new Date())
     React.useEffect(() => {
-        restartSeriesTimeout(secondsUntilNewRollSeries * 1000)
-        setTimeSeriesStarted(new Date())
-        return endSeriesTimeout
+        if (rolls.length > 0) {
+            restartSeriesTimeout(secondsUntilNewRollSeries * 1000)
+            setTimeSeriesStarted(new Date())
+            return endSeriesTimeout
+        }
     }, [rolls])
+
+    const clear = () => {
+        endSeriesTimeout()
+        endRollSeries()
+        resetRolls()
+    }
 
     return (
         <article className={classes['dice-tapper']}>
@@ -72,6 +80,9 @@ export const DiceTapper = ({
                         {inRollSeries && <TimedGhostResult start={timeSeriesStarted} seconds={secondsUntilNewRollSeries} />}
                     </></Output>
                 </section>
+            </section>
+            <section>
+                <button onClick={clear}>Clear</button>
             </section>
             <Instructions />
         </article>

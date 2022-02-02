@@ -95,4 +95,26 @@ describe('DiceTapper', () => {
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^82/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('10')
     })
+
+    test('reset rolls when commanded', async () => {
+        const random = predictableRandom(d8(3), d8(1), d8(8), d8(2))
+        render(<DiceTapper secondsUntilNewRollSeries={4} random={random} />)
+
+        await user.click(screen.getByText('d8'))
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3/)
+
+        await user.click(screen.getByText('d8'))
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^31/)
+        expect(screen.getByLabelText('Sum')).toHaveTextContent('4')
+
+        await user.click(screen.getByText('Clear'))
+
+        // Clear is clicked before the timer stops the series
+        await user.click(screen.getByText('d8'))
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^8/)
+
+        await user.click(screen.getByText('d8'))
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^82/)
+        expect(screen.getByLabelText('Sum')).toHaveTextContent('10')
+    })
 })
