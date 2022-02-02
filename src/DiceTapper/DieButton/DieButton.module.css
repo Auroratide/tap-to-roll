@@ -32,7 +32,7 @@
 
 .die-button .icon {
     --die-color: var(--color-primary);
-    --die-width: 6;
+    --die-width: 12;
     grid-column: 1;
     grid-row: 1;
     width: 110%;
@@ -51,7 +51,7 @@
 
 .die-button .pulse {
     --die-color: var(--color-primary);
-    --die-width: 6;
+    --die-width: 8;
     grid-column: 1;
     grid-row: 1;
     position: absolute;
