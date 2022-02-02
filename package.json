@@ -1,14 +1,17 @@
 {
   "name": "@auroratide/tap-to-roll",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Tap to roll some dice, perfect for Dungeons and Dragons or any other roleplaying game.",
   "scripts": {
     "dev": "parcel -p 3000 src/index.html",
     "build": "NODE_ENV=production parcel build src/index.html",
     "clean": "rm -rf dist",
     "test": "jest"
   },
-  "author": "",
+  "author": {
+    "name": "Timothy Foster",
+    "url": "https://auroratide.com"
+  },
   "license": "ISC",
   "dependencies": {
     "react": "^17.0.2",
