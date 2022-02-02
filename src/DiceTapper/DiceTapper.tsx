@@ -54,7 +54,7 @@ export const DiceTapper = ({
     }
 
     return (
-        <article className={classes['dice-tapper']}>
+        <article className={classes['dice-tapper']} aria-label="Tap to Roll Widget">
             <h2 className='visually-hidden'>Dice</h2>
             <fieldset className={classes['dice-container']}>
                 <legend className='visually-hidden'>Dice</legend>

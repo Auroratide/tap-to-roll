@@ -1,7 +1,7 @@
 import * as classes from './Instructions.module.css'
 
 export const Instructions = () => (
-    <aside className={classes.instructions}>
+    <aside className={classes.instructions} aria-label="Instructions">
         <h2 className={classes.title}>Instructions</h2>
         <ol className={classes.list}>
             <li>Tap a die to roll it.</li>
