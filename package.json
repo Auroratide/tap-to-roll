@@ -9,7 +9,7 @@
     "parchment:generate": "node ./parchment/generate-bg.js",
     "clean": "rm -rf dist",
     "gh": "gh-pages -d dist",
-    "publish": "npm-run-all clean build test",
+    "publish": "npm-run-all clean build test gh",
     "test": "jest"
   },
   "author": {
