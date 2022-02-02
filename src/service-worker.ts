@@ -20,10 +20,5 @@ const activate = async () => {
 self.addEventListener('activate', (e) => e.waitUntil(activate()))
 
 self.addEventListener('fetch', (e) => {
-    e.respondWith((async () => {
-        const cached = await caches.match(e.request)
-        if (cached) return cached
-
-        return await fetch(e.request)
-    })())
+    
 })
