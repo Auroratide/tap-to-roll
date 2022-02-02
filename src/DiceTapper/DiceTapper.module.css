@@ -49,3 +49,13 @@
 .rolls output {
     font-size: 1.75em;
 }
+
+.actions {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    display: flex;
+}
+
+.actions > * {
+    flex: 1;
+}

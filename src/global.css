@@ -8,8 +8,10 @@
 
     --color-bg: hsl(47, 41%, 81%);
     --color-bg-light: hsl(49, 62%, 95%);
+    --color-bg-text: hsl(0, 0%, 0%);
     --color-primary: hsl(9, 74%, 20%);
     --color-primary-dark: hsl(31, 100%, 12%);
+    --color-primary-text: hsl(0, 0%, 100%);
 }
 
 body {
@@ -28,6 +30,27 @@ a {
 
 a:hover {
     text-decoration: none;
+}
+
+button {
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+    border: none;
+    font-family: var(--font-heading);
+    text-transform: lowercase;
+    font-size: 1em;
+    padding: 0.25em 1.5em;
+    box-shadow: 0 0.1875em 0.125em -0.0625em hsla(0, 0%, 0%, 0.5);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+button:active {
+    background-color: var(--color-primary-dark);
+    box-shadow: 0 0 0.125em 0.0625em hsla(0, 0%, 0%, 0.75) inset;
 }
 
 /* https://webaim.org/techniques/css/invisiblecontent/ */

@@ -81,7 +81,7 @@ export const DiceTapper = ({
                     </></Output>
                 </section>
             </section>
-            <section>
+            <section className={classes.actions}>
                 <button onClick={clear}>Clear</button>
             </section>
             <Instructions />
