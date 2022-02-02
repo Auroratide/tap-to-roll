@@ -55,6 +55,7 @@ export const DiceTapper = ({
 
     return (
         <article className={classes['dice-tapper']}>
+            <h2 className='visually-hidden'>Dice</h2>
             <fieldset className={classes['dice-container']}>
                 <legend className='visually-hidden'>Dice</legend>
                 <SquareGrid columns={2}>
@@ -67,6 +68,7 @@ export const DiceTapper = ({
                 </SquareGrid>
             </fieldset>
             <section className={classes.results}>
+                <h2 className='visually-hidden'>Results</h2>
                 <section className={classes.aggregation}>
                     <Output id={ids.min} label="Min">{min}</Output>
                     <Output id={ids.sum} label="Sum">{sum}</Output>
