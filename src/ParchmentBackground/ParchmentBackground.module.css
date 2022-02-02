@@ -1,0 +1,15 @@
+.parchment-background {
+    position: relative;
+    overflow: hidden;
+}
+
+.parchment-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.parchment-effect rect {
+    fill: var(--color-bg);
+}
