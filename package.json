@@ -2,6 +2,7 @@
   "name": "@auroratide/tap-to-roll",
   "version": "0.1.0",
   "description": "Tap to roll some dice, perfect for Dungeons and Dragons or any other roleplaying game.",
+  "type": "module",
   "scripts": {
     "dev": "parcel -p 3000 src/index.html",
     "build": "NODE_ENV=production parcel build --public-url '/tap-to-roll' src/index.html",

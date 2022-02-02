@@ -1,8 +1,8 @@
-module.exports = {
+export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  setupFilesAfterEnv: [ '<rootDir>/src/testing/setup.js' ],
+  setupFilesAfterEnv: [ '<rootDir>/src/testing/setup.ts' ],
   moduleNameMapper: {
-    '^.+\\.css$': '<rootDir>/src/testing/css-stub.js',
+    '^.+\\.css$': '<rootDir>/src/testing/css-stub.ts',
   }
 }
