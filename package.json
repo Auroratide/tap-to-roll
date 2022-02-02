@@ -1,6 +1,6 @@
 {
   "name": "@auroratide/tap-to-roll",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Tap to roll some dice, perfect for Dungeons and Dragons or any other roleplaying game.",
   "type": "module",
   "scripts": {
