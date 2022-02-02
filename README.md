@@ -41,6 +41,6 @@ Built as a React app, mostly to keep my React skills sharp.
 
 ## Credits
 
-Fonts are remakes of the fonts used in the Dungeons and Dragons handbook. They are open source:
+Fonts are remakes of the fonts used in the Dungeons and Dragons handbook. They are openly available:
 
 * [Solbera DnD Fonts](https://github.com/jonathonf/solbera-dnd-fonts) (CC-BY-SA-4.0)
