@@ -1,0 +1,7 @@
+.square-progress {
+    fill: none;
+    stroke: var(--square-progress-color, black);
+    stroke-width: var(--square-progress-width, 6);
+    stroke-dasharray: 400;
+    transition: stroke-dashoffset 0.25s ease-in-out;
+}

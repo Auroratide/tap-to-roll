@@ -9,6 +9,7 @@ export const useSeries = <T>(initial: T[]): [
     T[],
     (item: T) => void,
     () => void,
+    boolean,
 ] => {
     const [ items, setItems ] = useState(initial)
     const [ inSeries, setInSeries ] = useState(false)
@@ -28,5 +29,6 @@ export const useSeries = <T>(initial: T[]): [
         items,
         addItem,
         endSeries,
+        inSeries,
     ]
 }

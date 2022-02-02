@@ -79,20 +79,20 @@ describe('DiceTapper', () => {
         render(<DiceTapper secondsUntilNewRollSeries={milliseconds(50)} random={random} />)
 
         await user.click(screen.getByText('d8'))
-        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3$/)
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^3/)
 
         await user.click(screen.getByText('d8'))
-        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^31$/)
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^31/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('4')
 
         await act(() => waitForMilliseconds(50))
 
         // After the time period, a new series begins
         await user.click(screen.getByText('d8'))
-        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^8$/)
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^8/)
 
         await user.click(screen.getByText('d8'))
-        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^82$/)
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^82/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('10')
     })
 })

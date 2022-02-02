@@ -9,6 +9,7 @@ import { SquareGrid } from '../SquareGrid'
 import { ShowRollResult } from './ShowRollResult'
 import { Output } from './Output'
 import { Instructions } from './Instructions'
+import { TimedGhostResult } from './TimedGhostResult'
 
 export type DiceTapperProps = {
     id?: string,
@@ -21,7 +22,7 @@ export const DiceTapper = ({
     secondsUntilNewRollSeries = 4,
     random = Math.random,
 }: DiceTapperProps) => {
-    const [ rolls, addRoll, endRollSeries ] = useSeries<RollResult>([])
+    const [ rolls, addRoll, endRollSeries, inRollSeries ] = useSeries<RollResult>([])
     const rollValues = rolls.map(it => it.value)
     const min = rollValues.length > 0 ? Math.min(...rollValues) : ''
     const sum = rollValues.reduce((a, b) => a + b, 0)
@@ -37,8 +38,10 @@ export const DiceTapper = ({
     const roll = (rollDie: Die) => () => addRoll(rollDie(random))
 
     const [ restartSeriesTimeout, endSeriesTimeout ] = useRestartableTimout(endRollSeries)
+    const [ timeSeriesStarted, setTimeSeriesStarted ] = React.useState(new Date())
     React.useEffect(() => {
         restartSeriesTimeout(secondsUntilNewRollSeries * 1000)
+        setTimeSeriesStarted(new Date())
         return endSeriesTimeout
     }, [rolls])
 
@@ -62,9 +65,12 @@ export const DiceTapper = ({
                     <Output id={ids.max} label="Max">{max}</Output>
                 </section>
                 <section className={classes.rolls}>
-                    <Output id={ids.rolls} label="Rolls">{rolls.map((roll, i) => (
-                        <ShowRollResult key={i} result={roll} />
-                    ))}</Output>
+                    <Output id={ids.rolls} label="Rolls"><>
+                        {rolls.map((roll, i) => (
+                            <ShowRollResult key={i} result={roll} />
+                        ))}
+                        {inRollSeries && <TimedGhostResult start={timeSeriesStarted} seconds={secondsUntilNewRollSeries} />}
+                    </></Output>
                 </section>
             </section>
             <Instructions />
