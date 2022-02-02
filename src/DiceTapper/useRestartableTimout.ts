@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef } from 'react'
 
 /**
  * Provides a way to continually restart a timeout, the handler only
@@ -8,18 +8,18 @@ export const useRestartableTimout = (handler: () => void): [
     (milliseconds: number) => void,
     () => void,
 ] => {
-    const [ timeoutId, setTimeoutId ] = useState<number>(undefined)
+    const timeoutId = useRef<number>(undefined)
 
     const endCurrentTimer = () => {
-        if (timeoutId !== undefined) {
-            window.clearTimeout(timeoutId)
+        if (timeoutId.current !== undefined) {
+            window.clearTimeout(timeoutId.current)
         }
     }
 
     const restartTimer = (milliseconds: number) => {
         endCurrentTimer()
 
-        setTimeoutId(window.setTimeout(handler, milliseconds))
+        timeoutId.current = window.setTimeout(handler, milliseconds)
     }
 
     return [ restartTimer, endCurrentTimer ]
