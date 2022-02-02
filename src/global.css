@@ -76,6 +76,8 @@ button:active {
 .parchment-container {
     position: relative;
     overflow: hidden;
+    background-image: url('parchment.png');
+    background-size: 100vmax 100vmax;
 }
 
 .parchment-effect {
