@@ -4,7 +4,7 @@ import { useSeries } from './useSeries'
 import { useRestartableTimout } from './useRestartableTimout'
 import * as classes from './DiceTapper.module.css'
 import { DieButton } from './DieButton'
-import { D4, D6, D8, D10, D12, D20 } from '../dice'
+import { D2, D4, D6, D8, D10, D12, D20, D100 } from '../dice'
 import { SquareGrid } from '../SquareGrid'
 import { ShowRollResult } from './ShowRollResult'
 import { Output } from './Output'
@@ -65,6 +65,8 @@ export const DiceTapper = ({
                     <DieButton onClick={roll(die(10))} icon={<D10 />} label="d10" />
                     <DieButton onClick={roll(die(12))} icon={<D12 />} label="d12" />
                     <DieButton onClick={roll(die(20))} icon={<D20 />} label="d20" />
+                    <DieButton onClick={roll(die(100))} icon={<D100 />} label="d100" />
+                    <DieButton onClick={roll(die(2))} icon={<D2 />} label="d2" />
                 </SquareGrid>
             </fieldset>
             <section className={classes.results}>
