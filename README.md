@@ -44,17 +44,3 @@ Built as a React app, mostly to keep my React skills sharp.
 Fonts are remakes of the fonts used in the Dungeons and Dragons handbook. They are open source:
 
 * [Solbera DnD Fonts](https://github.com/jonathonf/solbera-dnd-fonts) (CC-BY-SA-4.0)
-
-Goals:
-
-* Tap a die repeatedly for it to accumulate a sum
-* Accessibility of course
-
-Stack:
-
-* React
-* CSS Modules
-* Jest with Testing Library
-
-Fonts (be sure to credit):
-* https://github.com/jonathonf/solbera-dnd-fonts
