@@ -12,7 +12,32 @@
         <link rel="stylesheet" href="global.css" />
     </head>
     <body>
-        <div id="root"></div>
+        <div class="parchment-container">
+            <svg class="parchment-effect" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-hidden="true">
+                <filter id="parchment-filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="5" stitchTiles="stitch" />
+                    <feColorMatrix type="matrix" values="
+                        1 0.75 0 0 0
+                        0.5 0.75 0 0 0
+                        0 0 0 0 0
+                        0 0 0 0.5 0
+                    " />
+                    <feBlend in="SourceGraphic" mode="saturation" />
+                </filter>
+                <rect filter="url(#parchment-filter)" width="100" height="100" />
+            </svg>
+            <div class="app-container">
+                <main>
+                    <h1 class="app-title">Tap to Roll</h1>
+                    <p class="app-slogan">The simplest way to roll some dice.</p>
+                    <section id="app"></section>
+                </main>
+                <footer class="app-footer">
+                    <p>Made by <a href="https://auroratide.com">Auroratide</a></p>
+                    <p><a href="https://github.com/Auroratide/tap-to-roll">Github</a></p>
+                </footer>
+            </div>
+        </div>
         <script type="module" src="index.tsx"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
 import ReactDOM from 'react-dom'
-import { App } from './App'
+import { DiceTapper } from './DiceTapper'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<DiceTapper />, document.getElementById('app'))

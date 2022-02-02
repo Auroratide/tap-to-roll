@@ -64,3 +64,50 @@ button:active {
     padding: 0;
     position: absolute;
 }
+
+/* Uninitialized Shell */
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    padding: 0;
+}
+
+.parchment-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.parchment-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.parchment-effect rect {
+    fill: var(--color-bg);
+}
+
+.app-title {
+    text-align: center;
+    margin-bottom: 0.125em;
+}
+
+.app-slogan {
+    text-align: center;
+    font-family: var(--font-body);
+}
+
+.app-container {
+    max-width: 25rem;
+    padding: 1em;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: 1em;
+    margin: auto;
+}
+
+#app {
+    min-height: 100vh;
+}
