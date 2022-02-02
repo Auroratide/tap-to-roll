@@ -8,7 +8,7 @@ describe('TimedGhostResult', () => {
     const getProgressBar = () => screen.getByRole('progressbar') as HTMLProgressElement
 
     test('progress fills over time', async () => {
-        render(<TimedGhostResult start={new Date()} seconds={milliseconds(100)} />)
+        render(<TimedGhostResult start={new Date()} seconds={milliseconds(100)} accessible />)
 
         expect(getProgressBar()).toHaveValue(0)
         expect(getProgressBar().max).toEqual(100)

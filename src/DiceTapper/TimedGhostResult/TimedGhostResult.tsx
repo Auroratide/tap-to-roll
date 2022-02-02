@@ -5,9 +5,10 @@ import * as classes from './TimedGhostResult.module.css'
 export type TimedGhostResultProps = {
     start: Date,
     seconds: number,
+    accessible?: boolean,
 }
 
-export const TimedGhostResult = ({ start, seconds }: TimedGhostResultProps) => {
+export const TimedGhostResult = ({ start, seconds, accessible = false }: TimedGhostResultProps) => {
     const milliseconds = seconds * 1000
     const frameRequest = useRef<number>()
     const [ progress, setProgress ] = useState(0)
@@ -27,7 +28,8 @@ export const TimedGhostResult = ({ start, seconds }: TimedGhostResultProps) => {
     }, [start])
 
     return (
-        <span className={classes['timed-ghost-result']}>
+        // Hiding from accessibility tree, as it gets in the way of announcing a roll result
+        <span className={classes['timed-ghost-result']} aria-hidden={accessible ? undefined : 'true'}>
             <SquareProgress max={milliseconds} value={progress} />
         </span>
     )

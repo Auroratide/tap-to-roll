@@ -72,9 +72,9 @@ export const DiceTapper = ({
             <section className={classes.results}>
                 <h2 className='visually-hidden'>Results</h2>
                 <section className={classes.aggregation}>
-                    <Output id={ids.min} label="Min">{min}</Output>
-                    <Output id={ids.sum} label="Sum">{sum}</Output>
-                    <Output id={ids.max} label="Max">{max}</Output>
+                    <Output id={ids.min} label="Min" nolive>{min}</Output>
+                    <Output id={ids.sum} label="Sum" nolive>{sum}</Output>
+                    <Output id={ids.max} label="Max" nolive>{max}</Output>
                 </section>
                 <section className={classes.rolls}>
                     <Output id={ids.rolls} label="Rolls"><>
