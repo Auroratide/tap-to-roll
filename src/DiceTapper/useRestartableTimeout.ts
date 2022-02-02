@@ -4,7 +4,7 @@ import { useRef } from 'react'
  * Provides a way to continually restart a timeout, the handler only
  * being invoked once the designated time has passed without a restart.
  */
-export const useRestartableTimout = (handler: () => void): [
+export const useRestartableTimeout = (handler: () => void): [
     (milliseconds: number) => void,
     () => void,
 ] => {

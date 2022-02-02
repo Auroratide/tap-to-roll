@@ -1,7 +1,7 @@
 import React from 'react'
 import { die, Die, RollResult } from './die'
 import { useSeries } from './useSeries'
-import { useRestartableTimout } from './useRestartableTimout'
+import { useRestartableTimeout } from './useRestartableTimeout'
 import * as classes from './DiceTapper.module.css'
 import { DieButton } from './DieButton'
 import { D2, D4, D6, D8, D10, D12, D20, D100 } from '../dice'
@@ -37,7 +37,7 @@ export const DiceTapper = ({
 
     const roll = (rollDie: Die) => () => addRoll(rollDie(random))
 
-    const [ restartSeriesTimeout, endSeriesTimeout ] = useRestartableTimout(endRollSeries)
+    const [ restartSeriesTimeout, endSeriesTimeout ] = useRestartableTimeout(endRollSeries)
     const [ timeSeriesStarted, setTimeSeriesStarted ] = React.useState(new Date())
     React.useEffect(() => {
         if (rolls.length > 0) {
