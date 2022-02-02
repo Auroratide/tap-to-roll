@@ -4,6 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "parcel -p 3000 src/index.html",
+    "build": "NODE_ENV=production parcel build src/index.html",
+    "clean": "rm -rf dist",
     "test": "jest"
   },
   "author": "",
