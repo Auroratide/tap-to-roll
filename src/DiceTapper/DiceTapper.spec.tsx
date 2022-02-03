@@ -58,8 +58,8 @@ describe('DiceTapper', () => {
         const random = predictableRandom(d20(8), d20(3), d20(16))
         render(<DiceTapper random={random} />)
 
-        expect(screen.getByLabelText('Max')).toBeEmptyDOMElement()
-        expect(screen.getByLabelText('Min')).toBeEmptyDOMElement()
+        expect(screen.getByLabelText('Max')).toHaveTextContent('-')
+        expect(screen.getByLabelText('Min')).toHaveTextContent('-')
 
         await user.click(screen.getByText('d20'))
         expect(screen.getByLabelText('Max')).toHaveTextContent('8')

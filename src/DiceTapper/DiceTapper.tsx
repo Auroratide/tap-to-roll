@@ -24,9 +24,9 @@ export const DiceTapper = ({
 }: DiceTapperProps) => {
     const [ rolls, addRoll, endRollSeries, inRollSeries, resetRolls ] = useSeries<RollResult>([])
     const rollValues = rolls.map(it => it.value)
-    const min = rollValues.length > 0 ? Math.min(...rollValues) : ''
+    const min = rollValues.length > 0 ? Math.min(...rollValues) : '-'
     const sum = rollValues.reduce((a, b) => a + b, 0)
-    const max = rollValues.length > 0 ? Math.max(...rollValues) : ''
+    const max = rollValues.length > 0 ? Math.max(...rollValues) : '-'
 
     const ids = {
         min: `${id}-min`,
