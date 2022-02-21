@@ -117,4 +117,20 @@ describe('DiceTapper', () => {
         expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^82/)
         expect(screen.getByLabelText('Sum')).toHaveTextContent('10')
     })
+
+    test('pressing the undo button', async () => {
+        const random = predictableRandom(d8(3), d8(1), d8(8), d8(2))
+        render(<DiceTapper secondsUntilNewRollSeries={4} random={random} />)
+
+        await user.click(screen.getByText('d8'))
+        await user.click(screen.getByText('d8'))
+        await user.click(screen.getByText('d8'))
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^318/)
+
+        await user.click(screen.getByText('Undo'))
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^31/)
+
+        await user.click(screen.getByText('d8'))
+        expect(screen.getByLabelText('Rolls')).toHaveTextContent(/^312/)
+    })
 })

@@ -9,6 +9,7 @@ export const useSeries = <T>(initial: T[]): [
     T[],
     (item: T) => void,
     () => void,
+    () => void,
     boolean,
     () => void,
 ] => {
@@ -24,12 +25,17 @@ export const useSeries = <T>(initial: T[]): [
         }
     }
 
+    const removeLast = () => {
+        setItems(items.slice(0, -1))
+    }
+
     const endSeries = () => setInSeries(false)
     const reset = () => setItems([])
 
     return [
         items,
         addItem,
+        removeLast,
         endSeries,
         inSeries,
         reset,

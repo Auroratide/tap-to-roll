@@ -22,7 +22,7 @@ export const DiceTapper = ({
     secondsUntilNewRollSeries = 4,
     random = Math.random,
 }: DiceTapperProps) => {
-    const [ rolls, addRoll, endRollSeries, inRollSeries, resetRolls ] = useSeries<RollResult>([])
+    const [ rolls, addRoll, removeRoll, endRollSeries, inRollSeries, resetRolls ] = useSeries<RollResult>([])
     const rollValues = rolls.map(it => it.value)
     const min = rollValues.length > 0 ? Math.min(...rollValues) : '-'
     const sum = rollValues.reduce((a, b) => a + b, 0)
@@ -44,6 +44,9 @@ export const DiceTapper = ({
             restartSeriesTimeout(secondsUntilNewRollSeries * 1000)
             setTimeSeriesStarted(new Date())
             return endSeriesTimeout
+        } else {
+            endSeriesTimeout()
+            endRollSeries()
         }
     }, [rolls])
 
@@ -51,6 +54,10 @@ export const DiceTapper = ({
         endSeriesTimeout()
         endRollSeries()
         resetRolls()
+    }
+
+    const undo = () => {
+        removeRoll()
     }
 
     return (
@@ -87,6 +94,7 @@ export const DiceTapper = ({
             </section>
             <section className={classes.actions}>
                 <button onClick={clear}>Clear</button>
+                <button onClick={undo}>Undo</button>
             </section>
             <Instructions />
         </article>
